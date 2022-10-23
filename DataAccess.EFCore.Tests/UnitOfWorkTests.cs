@@ -1,4 +1,5 @@
 ﻿using DataAccess.EFCore.Tests.Entities;
+using DataAccess.EFCore.Tests.ScalarFunctions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -59,6 +60,51 @@ namespace DataAccess.EFCore.Tests
                                   .ToList();
 
             Assert.IsTrue(vehicles.Any());
+        }
+
+        [TestMethod]
+        public void Get_WithForeignKeyedCollection_GetsEntities()
+        {
+            var cars = _target.Get<Person>()
+                              .Where(p => p.LastName == "Shull")
+                              .Select(p => p.Cars)
+                              .ToList();
+
+            Assert.IsTrue(cars.Any());
+        }
+
+        [TestMethod]
+        public void Where_WithScalarFunction_GetsEntity()
+        {
+            var people = _target.Get<Person>()
+                                .Where(p => Funcs.NumberOfCarsOwned(p.Id) == 2)
+                                .ToList();
+
+            Assert.IsTrue(people.Count() == 1);
+        }
+
+        [TestMethod]
+        public void Select_WithScalarFunction_GetsValues()
+        {
+            var carsOwned = _target.Get<Person>()
+                                   .Select(p => Funcs.NumberOfCarsOwned(p.Id))
+                                   .ToList();
+
+            Assert.IsTrue(carsOwned.Count() == 1);
+            Assert.IsTrue(carsOwned.First() == 2);
+        }
+
+        [TestMethod]
+        public void SelectWithGeneric_WithScalarFunction_GetsValues()
+        {
+            var results = _target.Get<Person>()
+                                 .Select(p => new { personId = p.Id, 
+                                                    numCarsOwned = Funcs.NumberOfCarsOwned(p.Id) 
+                                                  })
+                                 .ToList();
+
+            Assert.IsTrue(results.Count() == 1);
+            Assert.IsTrue(results.First().numCarsOwned == 2);
         }
     }
 }

@@ -18,5 +18,11 @@ namespace DataAccess
             if (!_types.Contains(typeof(T)))
                 _types.Add(typeof(T));
         }
+
+        protected void Include(Type type)
+        {
+            if (!_types.Contains(type))
+                _types.Add(type);
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace DataAccess.EFCore.Tests.Entities
         public string? VIN { get; set; }
 
         [JsonIgnore]
-        [ForeignKey("ModelId")]
+        [ForeignKey(nameof(ModelId))]
         public virtual Model Model { get; set; }
     }
 }

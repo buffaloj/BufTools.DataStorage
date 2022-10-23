@@ -1,4 +1,5 @@
 ﻿using DataAccess.EFCore.Tests.Entities;
+using DataAccess.EFCore.Tests.ScalarFunctions;
 
 namespace DataAccess.EFCore.Tests
 {
@@ -9,6 +10,9 @@ namespace DataAccess.EFCore.Tests
             Include<Make>();
             Include<Model>();
             Include<Vehicle>();
+            Include<Person>();
+            Include<PersonCar>();
+            Include(typeof(Funcs));
         }
     }
 }
