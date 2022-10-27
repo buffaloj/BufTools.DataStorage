@@ -17,6 +17,11 @@ namespace DataAccess.EFCore
             return _dbContext.Set<TEntity>();
         }
 
+        public IProcedure<TEntity> Proc<TEntity>() where TEntity : class
+        {
+            return new Procedure<TEntity>(_dbContext.Set<TEntity>());
+        }
+
         public IQueryable<TEntity> TableFunc<TEntity>(Expression<Func<IQueryable<TEntity>>> expression) where TEntity : class
         {
             return _dbContext.FromExpression(expression);

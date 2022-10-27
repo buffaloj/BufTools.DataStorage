@@ -1,5 +1,7 @@
 ﻿using DataAccess.EFCore.Tests.Entities;
 using DataAccess.EFCore.Tests.Functions;
+using DataAccess.EFCore.Tests.Models;
+using DataAccess.EFCore.Tests.Procedures;
 using DataAccess.EFCore.Tests.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -123,6 +125,14 @@ namespace DataAccess.EFCore.Tests
             var makes = _target.Get<VehicleData>().ToList();
 
             Assert.IsTrue(makes.Any());
+        }
+
+        [TestMethod]
+        public void Proc_WithValidSproc_Succeeds()
+        {
+            var owners = _target.Proc<Owner>().GetOwnersOfVehicle("12345678901234567").ToList();
+
+            Assert.IsTrue(owners.Any());
         }
     }
 }
