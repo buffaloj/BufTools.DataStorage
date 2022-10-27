@@ -1,5 +1,5 @@
 ﻿using DataAccess.EFCore.Tests.Entities;
-using DataAccess.EFCore.Tests.ScalarFunctions;
+using DataAccess.EFCore.Tests.Functions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -99,12 +99,21 @@ namespace DataAccess.EFCore.Tests
         {
             var results = _target.Get<Person>()
                                  .Select(p => new { personId = p.Id, 
-                                                    numCarsOwned = Funcs.NumberOfCarsOwned(p.Id) 
-                                                  })
+                                                    carsOwned = Funcs.NumberOfCarsOwned(p.Id) 
+                                                   })
                                  .ToList();
 
             Assert.IsTrue(results.Count() == 1);
-            Assert.IsTrue(results.First().numCarsOwned == 2);
+            Assert.IsTrue(results.First().carsOwned == 2);
+        }
+
+        [TestMethod]
+        public void TableFunc_WithTableFunction_GetsTableResults()
+        {
+            var results = _target.TableFunc(() => Funcs.OwnersOfVehicle("12345678901234567"))
+                                 .ToList();
+
+            Assert.IsTrue(results.Count() == 1);
         }
     }
 }

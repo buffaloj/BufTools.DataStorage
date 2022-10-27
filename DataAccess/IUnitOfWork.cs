@@ -1,9 +1,13 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess
 {
     public interface IUnitOfWork
     {
         IQueryable<TEntity> Get<TEntity>() where TEntity : class;
+
+        IQueryable<TEntity> TableFunc<TEntity>(Expression<Func<IQueryable<TEntity>>> expression) where TEntity : class;
     }
 }

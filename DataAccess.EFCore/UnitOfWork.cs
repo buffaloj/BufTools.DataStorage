@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace DataAccess.EFCore
 {
@@ -14,6 +15,11 @@ namespace DataAccess.EFCore
         public IQueryable<TEntity> Get<TEntity>() where TEntity : class
         {
             return _dbContext.Set<TEntity>();
+        }
+
+        public IQueryable<TEntity> TableFunc<TEntity>(Expression<Func<IQueryable<TEntity>>> expression) where TEntity : class
+        {
+            return _dbContext.FromExpression(expression);
         }
     }
 }
