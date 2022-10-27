@@ -28,6 +28,15 @@ namespace DataAccess.EFCore
             _dbContext.Entry(entity).State = EntityState.Modified;
         }
 
+        public void Delete<TEntity>(TEntity entity) where TEntity : class
+        {
+            var dbSet = _dbContext.Set<TEntity>();
+            if (_dbContext.Entry(entity).State == EntityState.Detached)
+                dbSet.Attach(entity);
+
+            dbSet.Remove(entity);
+        }
+
         public IProcedure<TEntity> Proc<TEntity>() where TEntity : class
         {
             return new Procedure<TEntity>(_dbContext.Set<TEntity>());

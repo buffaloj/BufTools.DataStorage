@@ -166,5 +166,19 @@ namespace DataAccess.EFCore.Tests
 
             Assert.IsTrue(true);
         }
+
+        [TestMethod]
+        public void Delete_WithBasicEntity_DeletesEntity()
+        {
+            var vehicle = Vehicle.Example();
+            vehicle.VIN = MakeUniqueVin();
+            _target.Insert(vehicle);
+            _target.Save();
+
+            _target.Delete(vehicle);
+            _target.Save();
+
+            Assert.IsTrue(true);
+        }
     }
 }
