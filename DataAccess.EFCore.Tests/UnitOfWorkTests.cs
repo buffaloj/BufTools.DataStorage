@@ -1,5 +1,6 @@
 ﻿using DataAccess.EFCore.Tests.Entities;
 using DataAccess.EFCore.Tests.Functions;
+using DataAccess.EFCore.Tests.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -114,6 +115,14 @@ namespace DataAccess.EFCore.Tests
                                  .ToList();
 
             Assert.IsTrue(results.Count() == 1);
+        }
+
+        [TestMethod]
+        public void Get_WithView_GetsViewResults()
+        {
+            var makes = _target.Get<VehicleData>().ToList();
+
+            Assert.IsTrue(makes.Any());
         }
     }
 }

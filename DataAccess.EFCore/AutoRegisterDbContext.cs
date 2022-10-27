@@ -23,6 +23,7 @@ namespace DataAccess.EFCore
             {
                 RegisterIfEntity(modelBuilder, type);
                 RegisterIfFunction(modelBuilder, type);
+                RegisterIfView(modelBuilder, type);
             }
         }
 
@@ -60,6 +61,19 @@ namespace DataAccess.EFCore
                 var attribute = method.GetCustomAttributes(typeof(FunctionAttribute), true).First() as FunctionAttribute;
                 modelBuilder.HasDbFunction(method).HasName(attribute?.FunctionName ?? "")
                                                   .HasSchema(attribute?.Schema ?? "");
+            }
+        }
+
+        private void RegisterIfView(ModelBuilder modelBuilder, Type type)
+        {
+            var attribute = type.GetCustomAttributes(typeof(ViewAttribute), true).FirstOrDefault() as ViewAttribute;
+            if (attribute != null)
+            {
+                var entity = modelBuilder.Entity(type);
+                entity.HasNoKey();
+
+                if (!string.IsNullOrWhiteSpace(attribute.ViewName))
+                    entity.ToView(attribute.ViewName, attribute.Schema);
             }
         }
     }
