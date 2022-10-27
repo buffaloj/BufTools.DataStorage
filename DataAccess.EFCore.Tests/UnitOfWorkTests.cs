@@ -134,5 +134,22 @@ namespace DataAccess.EFCore.Tests
 
             Assert.IsTrue(owners.Any());
         }
+
+        [TestMethod]
+        public void Insert_WithBasicEntity_InsertsEntity()
+        {
+            var vehicle = Vehicle.Example();
+            vehicle.VIN = MakeUniqueVin();
+
+            _target.Insert(vehicle);
+            _target.Save();
+
+            Assert.IsTrue(vehicle.Id > 0);
+        }
+
+        private string MakeUniqueVin()
+        {
+            return DateTime.Now.ToString("mm dd yyyy mm ss HH").Replace(" ", "");
+        }
     }
 }

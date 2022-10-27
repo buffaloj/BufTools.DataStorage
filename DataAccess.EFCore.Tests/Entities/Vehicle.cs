@@ -19,5 +19,14 @@ namespace DataAccess.EFCore.Tests.Entities
         [JsonIgnore]
         [ForeignKey(nameof(ModelId))]
         public virtual Model Model { get; set; }
+
+        public static Vehicle Example()
+        {
+            return new Vehicle
+            {
+                ModelId = 1,
+                VIN = "11223344556677889"
+            };
+        }
     }
 }

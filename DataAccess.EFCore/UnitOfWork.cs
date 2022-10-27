@@ -17,6 +17,11 @@ namespace DataAccess.EFCore
             return _dbContext.Set<TEntity>();
         }
 
+        public void Insert<TEntity>(TEntity entity) where TEntity : class
+        {
+            _dbContext.Add(entity);
+        }
+
         public IProcedure<TEntity> Proc<TEntity>() where TEntity : class
         {
             return new Procedure<TEntity>(_dbContext.Set<TEntity>());
@@ -25,6 +30,16 @@ namespace DataAccess.EFCore
         public IQueryable<TEntity> TableFunc<TEntity>(Expression<Func<IQueryable<TEntity>>> expression) where TEntity : class
         {
             return _dbContext.FromExpression(expression);
+        }
+
+        public void Save()
+        {
+            _dbContext.SaveChanges();
+        }
+
+        public Task SaveAsync()
+        {
+            return _dbContext.SaveChangesAsync();
         }
     }
 }
