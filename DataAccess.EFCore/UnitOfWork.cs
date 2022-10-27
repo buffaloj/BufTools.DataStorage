@@ -22,6 +22,12 @@ namespace DataAccess.EFCore
             _dbContext.Add(entity);
         }
 
+        public void Update<TEntity>(TEntity entity) where TEntity : class
+        {
+            _dbContext.Set<TEntity>().Attach(entity);
+            _dbContext.Entry(entity).State = EntityState.Modified;
+        }
+
         public IProcedure<TEntity> Proc<TEntity>() where TEntity : class
         {
             return new Procedure<TEntity>(_dbContext.Set<TEntity>());

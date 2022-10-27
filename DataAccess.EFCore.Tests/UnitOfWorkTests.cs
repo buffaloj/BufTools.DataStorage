@@ -151,5 +151,20 @@ namespace DataAccess.EFCore.Tests
         {
             return DateTime.Now.ToString("mm dd yyyy mm ss HH").Replace(" ", "");
         }
+
+        [TestMethod]
+        public void Update_WithBasicEntity_UpdatesEntity()
+        {
+            var vehicle = _target.Get<Vehicle>().First();
+            if (vehicle.ModelId == 1)
+                vehicle.ModelId = 2;
+            else
+                vehicle.ModelId = 1;
+
+            _target.Update(vehicle);
+            _target.Save();
+
+            Assert.IsTrue(true);
+        }
     }
 }
