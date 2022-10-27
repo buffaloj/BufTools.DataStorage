@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.EFCore
 {
+    /// <summary>
+    /// A class that runs a stored procedure in a database
+    /// </summary>
+    /// <typeparam name="TEntity">The type of entity returned by the stored procedure</typeparam>
     public class Procedure<TEntity> : IProcedure<TEntity>
          where TEntity : class
     {

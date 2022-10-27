@@ -2,19 +2,23 @@
 
 namespace DataAccess.Annotations
 {
+    /// <summary>
+    /// Apply this attribute to any class that maps to a view in the database
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     sealed public class ViewAttribute : Attribute
     {
         public string? ViewName { get; }
         public string? Schema { get; }
 
-        public ViewAttribute()
+        /// <summary>
+        /// Constructs an instance
+        /// </summary>
+        /// <param name="viewName">The name of the view in the database</param>
+        /// <param name="schema">Optional schema of the view in the database</param>
+        public ViewAttribute(string viewName, string? schema = null)
         {
-        }
-
-        public ViewAttribute(string tableName, string? schema = null)
-        {
-            ViewName = tableName;
+            ViewName = viewName;
             Schema = schema;
         }
     }

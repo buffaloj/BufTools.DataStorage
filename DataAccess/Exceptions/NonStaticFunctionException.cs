@@ -25,6 +25,11 @@ namespace DataAccess.Exceptions
             InvalidMethods = invalidMethods;
         }
 
+        /// <summary>
+        /// Constructs an instance
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
         protected NonStaticFunctionException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }

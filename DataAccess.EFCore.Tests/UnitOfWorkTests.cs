@@ -130,7 +130,7 @@ namespace DataAccess.EFCore.Tests
         [TestMethod]
         public void Proc_WithValidSproc_Succeeds()
         {
-            var owners = _target.Proc<Owner>().GetOwnersOfVehicle("12345678901234567").ToList();
+            var owners = _target.Sproc<Owner>().GetOwnersOfVehicle("12345678901234567").ToList();
 
             Assert.IsTrue(owners.Any());
         }

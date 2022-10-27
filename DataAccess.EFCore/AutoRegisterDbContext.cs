@@ -4,11 +4,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.EFCore
 {
+    /// <summary>
+    /// A datacontext for EFCore that automatically registers class types with Entity, View, and Function attributes
+    /// </summary>
+    /// <typeparam name="TContext">The type of <see cref="IDataContext"/> used to specify the data types to register</typeparam>
     public class AutoRegisterDbContext<TContext> : DbContext
         where TContext : IDataContext
     {
         private readonly TContext _context;
 
+        /// <summary>
+        /// Constructs an instance
+        /// </summary>
+        /// <param name="options">DBContext initialization options</param>
+        /// <param name="context">The context object to use</param>
+        /// <exception cref="ArgumentNullException">Thrown when a context is not provided</exception>
         public AutoRegisterDbContext(DbContextOptions options, TContext context) : base(options)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
