@@ -1,7 +1,5 @@
-﻿using DataAccess.EFCore.Tests.Entities;
-using DataAccess.EFCore.Tests.Models;
-using DataAccess.EFCore.Tests.Functions;
-using DataAccess.EFCore.Tests.Views;
+﻿using DataAccess.EFCore.Tests.Functions;
+using DataAccess.Annotations;
 
 namespace DataAccess.EFCore.Tests
 {
@@ -9,13 +7,8 @@ namespace DataAccess.EFCore.Tests
     {
         public TestDataContext()
         {
-            Include<Make>();
-            Include<Model>();
-            Include<Vehicle>();
-            Include<Person>();
-            Include<PersonCar>();
-            Include<Owner>();
-            Include<VehicleData>();
+            IncludeWithClassAttribute<EntityAttribute>(GetType().Assembly);
+            IncludeWithClassAttribute<ViewAttribute>(GetType().Assembly);
             Include(typeof(Funcs));
         }
     }
