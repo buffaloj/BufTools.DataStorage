@@ -11,7 +11,7 @@ namespace DataAccess.EFCore.Tests
     [TestClass]
     public class UnitOfWorkTests
     {
-        private readonly UnitOfWork _target;
+        private readonly UnitOfWork<TestDataContext> _target;
 
         public UnitOfWorkTests()
         {
@@ -21,7 +21,7 @@ namespace DataAccess.EFCore.Tests
             optionsBuilder.UseSqlServer(connectionstring);
 
             var context = new AutoRegisterDbContext<TestDataContext>(optionsBuilder.Options, new TestDataContext());
-            _target = new UnitOfWork(context);
+            _target = new UnitOfWork<TestDataContext>(context);
         }
 
         [TestMethod]

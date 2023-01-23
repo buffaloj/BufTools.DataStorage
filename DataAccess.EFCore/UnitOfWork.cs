@@ -4,7 +4,8 @@ using System.Linq.Expressions;
 namespace DataAccess.EFCore
 {
     /// <inheritdoc/>
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork<TContext> : IUnitOfWork
+        where TContext : IDataContext
     {
         private readonly DbContext _dbContext;
 
@@ -13,7 +14,7 @@ namespace DataAccess.EFCore
         /// </summary>
         /// <param name="dbContext">An EFCore dbcontext that allows access the database</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public UnitOfWork(DbContext dbContext)
+        public UnitOfWork(AutoRegisterDbContext<TContext> dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException($"{nameof(dbContext)} cannot be null");
         }
