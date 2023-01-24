@@ -14,7 +14,7 @@ namespace DataAccess.EFCore.Tests.Entities
         public int MakeId { get; set; }
 
         [Column("name")]
-        public string? ModelName { get; set; }
+        public string ModelName { get; set; }
 
         [JsonIgnore]
         [ForeignKey("MakeId")]

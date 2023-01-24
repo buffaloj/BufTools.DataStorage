@@ -13,7 +13,7 @@ namespace DataAccess.Exceptions
         /// <summary>
         /// A collection of method names that are not static, but should be
         /// </summary>
-        public IEnumerable<string>? InvalidMethods { get; }
+        public IEnumerable<string> InvalidMethods { get; }
 
         /// <summary>
         /// Constructs an instance

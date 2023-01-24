@@ -8,15 +8,15 @@ namespace DataAccess.Annotations
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     sealed public class ViewAttribute : Attribute
     {
-        public string? ViewName { get; }
-        public string? Schema { get; }
+        public string ViewName { get; }
+        public string Schema { get; }
 
         /// <summary>
         /// Constructs an instance
         /// </summary>
         /// <param name="viewName">The name of the view in the database</param>
         /// <param name="schema">Optional schema of the view in the database</param>
-        public ViewAttribute(string viewName, string? schema = null)
+        public ViewAttribute(string viewName, string schema = null)
         {
             ViewName = viewName;
             Schema = schema;

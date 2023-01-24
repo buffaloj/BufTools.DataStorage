@@ -10,6 +10,6 @@ namespace DataAccess.EFCore.Tests.Entities
         public int Id { get; set; }
 
         [Column("manufacturer")]
-        public string? MakeName { get; set; }
+        public string MakeName { get; set; }
     }
 }

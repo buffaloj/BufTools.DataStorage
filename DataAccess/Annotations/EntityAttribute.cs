@@ -8,8 +8,8 @@ namespace DataAccess.Annotations
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     sealed public class EntityAttribute : Attribute
     {
-        public string? TableName { get; }
-        public string? Schema { get; }
+        public string TableName { get; }
+        public string Schema { get; }
 
         /// <summary>
         /// Constructs an instance that is NOT associated to a specific table.  ie, is a return value for a table func ot sproc
@@ -23,7 +23,7 @@ namespace DataAccess.Annotations
         /// </summary>
         /// <param name="tableName">The name of the table the entity is associated with</param>
         /// <param name="schema">An optional param for the schema of the table</param>
-        public EntityAttribute(string tableName, string? schema = null)
+        public EntityAttribute(string tableName, string schema = null)
         {
             TableName = tableName;
             Schema = schema;
