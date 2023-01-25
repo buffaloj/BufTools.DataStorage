@@ -154,5 +154,5 @@ And use it:
 ```cs
 var owners = uow.Sproc<Owner>()
                 .GetOwnersOfVehicle("12345678901234567")
-				.ToList();
+                .ToList();
 ```
