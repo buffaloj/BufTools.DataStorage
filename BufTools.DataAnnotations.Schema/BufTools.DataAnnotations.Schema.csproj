@@ -14,6 +14,10 @@
     <PackageIcon>icon.png</PackageIcon>
     <Description>A set of attributes to mark your data classes for use with BufTools.DataStorage</Description>
     <PackageTags></PackageTags>
+    <PackageId>$(AssemblyName)</PackageId>
+    <FileVersion>1.0.1</FileVersion>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

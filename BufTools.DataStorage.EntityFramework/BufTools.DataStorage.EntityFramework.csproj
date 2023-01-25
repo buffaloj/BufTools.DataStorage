@@ -14,8 +14,11 @@
     <PackageIcon>icon.png</PackageIcon>
     <Description>An implementation of BufTools.DataStorage that uses EntityFramework.
 
-This solution puts Entities, Views, SPROCs, and DB Functions "at your fingertips"; just add an Entity, Func, or Sproc and use it. No setup, registration, or other work.</Description>
+This package puts Entities, Views, SPROCs, and DB Functions "at your fingertips"; just add an Entity, Func, or Sproc and use it. No setup, registration, or other work.</Description>
     <RepositoryType>entityframework;data;dataaccess;dependencyinjection;di;sql;ef</RepositoryType>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">

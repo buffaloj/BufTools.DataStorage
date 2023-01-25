@@ -12,9 +12,12 @@
     <PackageTags>entityframework;data;dataaccess;dependencyinjection;di;sql;ef</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Title>Data Injection</Title>
-    <Description>This solution puts Entities, Views, SPROCs, and DB Functions "at your fingertips"; just add an Entity, Func, or Sproc and use it. No setup, registration, or other work.</Description>
+    <Description>This package puts Entities, Views, SPROCs, and DB Functions "at your fingertips"; just add an Entity, Func, or Sproc and use it. No setup, registration, or other work.</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile />
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
