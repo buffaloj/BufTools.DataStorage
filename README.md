@@ -129,9 +129,8 @@ public static partial class Funcs
 
 And use it:
 ```cs
-var owners = uow.Sproc<Owner>()
-				.GetOwnersOfVehicle("12345678901234567")
-				.ToList();
+var results = _target.TableFunc(() => Funcs.OwnersOfVehicle("12345678901234567"))
+                     .ToList();
 ```
 
 ## Execute a SPROC
