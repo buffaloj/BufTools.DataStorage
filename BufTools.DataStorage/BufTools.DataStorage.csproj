@@ -5,8 +5,8 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Jeremy Shull</Authors>
     <Copyright>Copyright (c) Jeremy Shull, 2023</Copyright>
-    <PackageProjectUrl>https://github.com/buffaloj/DataAccess</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/buffaloj/DataAccess</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/buffaloj/BufTools.DataStorage</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/buffaloj/BufTools.DataStorage</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>entityframework;data;dataaccess;dependencyinjection;di;sql;ef</PackageTags>

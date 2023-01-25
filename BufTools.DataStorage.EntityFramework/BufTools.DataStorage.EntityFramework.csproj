@@ -7,8 +7,8 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Jeremy Shull</Authors>
     <Copyright>Copyright (c) Jeremy Shull, 2023</Copyright>
-    <PackageProjectUrl>https://github.com/buffaloj/DataAccess</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/buffaloj/DataAccess</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/buffaloj/BufTools.DataStorage</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/buffaloj/BufTools.DataStorage</RepositoryUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
