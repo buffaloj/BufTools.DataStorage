@@ -1,4 +1,4 @@
-﻿using BufTools.EntityFrameworkCore.DataAutoWiring.EntityFramework;
+﻿using BufTools.DataStorage.EntityFramework;
 using DataInjection.EFCore.Tests.Entities;
 using DataInjection.EFCore.Tests.Functions;
 using DataInjection.EFCore.Tests.Models;

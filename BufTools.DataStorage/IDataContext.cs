@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring.Interfaces
+namespace BufTools.DataStorage
 {
     /// <summary>
     /// An interface to supply the types that might represent an entity, view, or function in the database.

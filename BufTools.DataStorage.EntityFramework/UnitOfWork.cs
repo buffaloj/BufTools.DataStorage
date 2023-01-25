@@ -1,11 +1,10 @@
-﻿using BufTools.EntityFrameworkCore.DataAutoWiring.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring.EntityFramework
+namespace BufTools.DataStorage.EntityFramework
 {
     /// <inheritdoc/>
     public class UnitOfWork<TContext> : IUnitOfWork
@@ -14,7 +13,7 @@ namespace BufTools.EntityFrameworkCore.DataAutoWiring.EntityFramework
         private readonly DbContext _dbContext;
 
         /// <summary>
-        /// Constructs an instance of <see cref="UnitOfWork"/> that used EFCore
+        /// Constructs an instance that used EntityFrameworkCore
         /// </summary>
         /// <param name="dbContext">An EFCore dbcontext that allows access the database</param>
         /// <exception cref="ArgumentNullException"></exception>

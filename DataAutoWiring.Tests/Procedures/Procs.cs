@@ -1,4 +1,4 @@
-﻿using BufTools.EntityFrameworkCore.DataAutoWiring.Interfaces;
+﻿using BufTools.DataStorage;
 using DataInjection.EFCore.Tests.Models;
 using System.Linq;
 

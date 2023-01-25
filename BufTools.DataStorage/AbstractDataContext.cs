@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring.Interfaces
+namespace BufTools.DataStorage
 {
     /// <summary>
     /// This class simplifies registering class types that represent entities, views, functions, and sprocs in a database

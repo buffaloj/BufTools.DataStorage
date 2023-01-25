@@ -1,4 +1,4 @@
-﻿using BufTools.EntityFrameworkCore.DataAutoWiring.Annotations;
+﻿using BufTools.DataAnnotations.Schema;
 using DataInjection.EFCore.Tests.Models;
 using System;
 using System.Linq;

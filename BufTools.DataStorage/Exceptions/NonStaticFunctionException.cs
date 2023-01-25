@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring.Exceptions
+namespace BufTools.DataStorage.Exceptions
 {
     /// <summary>
     /// Thrown when a DataAccess Function is not static

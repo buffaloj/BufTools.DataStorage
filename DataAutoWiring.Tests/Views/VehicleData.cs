@@ -1,4 +1,4 @@
-﻿using BufTools.EntityFrameworkCore.DataAutoWiring.Annotations;
+﻿using BufTools.DataAnnotations.Schema;
 
 namespace DataInjection.EFCore.Tests.Views
 {

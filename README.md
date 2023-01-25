@@ -1,4 +1,4 @@
-# Data Auto Wiring
+# DataStorage
 
 This solution puts Entities, Views, SPROCs, and DB Functions "at your fingertips"; just add an Entity, Func, or Sproc and use it. No setup, registration, or other work.
 
@@ -17,6 +17,16 @@ Then use it:
 ```cs
 var lastName = uow.Get<Person>().Where(p => p.LastName == "Doe").FirstOrDefault();
 ```
+
+# Packages
+
+This solution is made up of three packages to limit the required dependencies when using this your own solution.
+
+- BufTools.DataAnnotations.Schema - Provides Attributes to mark data classes/methods as an Entity, View, Procedure, or Function.  
+
+- BufTools.DataStorage - Provides abstractions CRUD operation, access Views, Functions, and SPROCS
+
+- BufTools.DataStorage.EntityFramework - An implementation of DataStorage using EntityFrameworkCore including IServiceExtensions to simplify with initial setup.
 
 # Getting Started
 There are two one-time setup steps to start using this package:

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring.Annotations
+namespace BufTools.DataAnnotations.Schema
 {
     /// <summary>
     /// Apply this attribute to any scalar or table function
@@ -8,7 +8,14 @@ namespace BufTools.EntityFrameworkCore.DataAutoWiring.Annotations
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     sealed public class FunctionAttribute : Attribute
     {
+        /// <summary>
+        /// The name of the DB function a c# method si associated with
+        /// </summary>
         public string FunctionName { get; }
+
+        /// <summary>
+        /// The DB schema of the table the function is associated with
+        /// </summary>
         public string Schema { get; }
 
         /// <summary>

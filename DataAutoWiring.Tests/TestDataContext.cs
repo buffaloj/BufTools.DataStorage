@@ -1,5 +1,5 @@
-﻿using BufTools.EntityFrameworkCore.DataAutoWiring.Annotations;
-using BufTools.EntityFrameworkCore.DataAutoWiring.Interfaces;
+﻿using BufTools.DataAnnotations.Schema;
+using BufTools.DataStorage;
 using DataInjection.EFCore.Tests.Functions;
 
 namespace DataInjection.EFCore.Tests

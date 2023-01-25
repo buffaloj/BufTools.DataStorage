@@ -1,10 +1,8 @@
-﻿using BufTools.EntityFrameworkCore.DataAutoWiring.EntityFramework;
-using BufTools.EntityFrameworkCore.DataAutoWiring.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring
+namespace BufTools.DataStorage.EntityFramework
 {
     /// <summary>
     /// Extension helper

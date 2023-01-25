@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BufTools.EntityFrameworkCore.DataAutoWiring\BufTools.EntityFrameworkCore.DataAutoWiring.csproj" />
+    <ProjectReference Include="..\BufTools.DataAnnotations.Schema\BufTools.DataAnnotations.Schema.csproj" />
+    <ProjectReference Include="..\BufTools.DataStorage.EntityFramework\BufTools.DataStorage.EntityFramework.csproj" />
+    <ProjectReference Include="..\BufTools.DataStorage\BufTools.DataStorage.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring.Annotations
+namespace BufTools.DataAnnotations.Schema
 {
     /// <summary>
     /// Apply this attribute to each param that together form a promary key

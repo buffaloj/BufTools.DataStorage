@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Jeremy Shull</Authors>
+    <Copyright>Copyright (c) Jeremy Shull, 2023</Copyright>
+    <PackageProjectUrl>https://github.com/buffaloj/DataAccess</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/buffaloj/DataAccess</RepositoryUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>entityframework;data;dataaccess;dependencyinjection;di;sql;ef</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Title>Data Injection</Title>
+    <Description>This solution puts Entities, Views, SPROCs, and DB Functions "at your fingertips"; just add an Entity, Func, or Sproc and use it. No setup, registration, or other work.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BufTools.DataAnnotations.Schema\BufTools.DataAnnotations.Schema.csproj" />
+  </ItemGroup>
+
+</Project>

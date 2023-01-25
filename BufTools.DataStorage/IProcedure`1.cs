@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring.Interfaces
+namespace BufTools.DataStorage
 {
     /// <summary>
     /// An interface to supply params to a stored procedure and then run it
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public interface IProcedure<TEntity>
+    public interface IProcedure<TEntity> : IProcedure
         where TEntity : class
     {
         /// <summary>

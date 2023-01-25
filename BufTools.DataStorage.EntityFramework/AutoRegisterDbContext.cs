@@ -1,11 +1,10 @@
-﻿using BufTools.EntityFrameworkCore.DataAutoWiring.Annotations;
-using BufTools.EntityFrameworkCore.DataAutoWiring.Exceptions;
-using BufTools.EntityFrameworkCore.DataAutoWiring.Interfaces;
+﻿using BufTools.DataAnnotations.Schema;
+using BufTools.DataStorage.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring.EntityFramework
+namespace BufTools.DataStorage.EntityFramework
 {
     /// <summary>
     /// A datacontext for EFCore that automatically registers class types with Entity, View, and Function attributes
@@ -27,6 +26,11 @@ namespace BufTools.EntityFrameworkCore.DataAutoWiring.EntityFramework
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        /// <summary>
+        /// Method that registers data with EntityFrameworkCore
+        /// </summary>
+        /// <param name="modelBuilder">The builder to register with</param>
+        /// <exception cref="ArgumentNullException">Thrown if modelBuilder is null</exception>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             if (modelBuilder == null) throw new ArgumentNullException(nameof(modelBuilder));

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring.Annotations
+namespace BufTools.DataAnnotations.Schema
 {
     /// <summary>
     /// Apply this attribute to any class that maps to a view in the database
@@ -8,7 +8,14 @@ namespace BufTools.EntityFrameworkCore.DataAutoWiring.Annotations
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     sealed public class ViewAttribute : Attribute
     {
+        /// <summary>
+        /// The name of the view the View class is associated with
+        /// </summary>
         public string ViewName { get; }
+
+        /// <summary>
+        /// The DB schema of the table the Entity is associated with
+        /// </summary>
         public string Schema { get; }
 
         /// <summary>

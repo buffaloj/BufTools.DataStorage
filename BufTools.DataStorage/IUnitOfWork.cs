@@ -1,10 +1,9 @@
-﻿using BufTools.EntityFrameworkCore.DataAutoWiring.Interfaces;
-using System;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring
+namespace BufTools.DataStorage
 {
     /// <summary>
     /// Allows interacting with a single database

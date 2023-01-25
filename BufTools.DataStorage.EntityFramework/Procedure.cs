@@ -1,11 +1,10 @@
-﻿using BufTools.EntityFrameworkCore.DataAutoWiring.Interfaces;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BufTools.EntityFrameworkCore.DataAutoWiring.EntityFramework
+namespace BufTools.DataStorage.EntityFramework
 {
     /// <summary>
     /// A class that runs a stored procedure in a database
