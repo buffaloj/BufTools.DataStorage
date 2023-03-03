@@ -9,10 +9,3 @@ services:
     ports:
       - "1433:1433"
 
-  datastorage.tests:
-    image: ${DOCKER_REGISTRY-}datastoragetests
-    build:
-      context: .
-      dockerfile: DataStorage.Tests\Dockerfile
-    depends_on:
-      - seeded-sql-server-db

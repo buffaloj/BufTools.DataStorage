@@ -156,3 +156,13 @@ var owners = uow.Sproc<Owner>()
                 .GetOwnersOfVehicle("12345678901234567")
                 .ToList();
 ```
+
+# Running the Tests
+The tests are mainly integration tests that require a SQL database to be running.  To ease setting this up and witness the tests passing, Docker files are included that will spin up a SQL Server instance and populate it with test data that the tests require.
+
+To run the tests locally:
+1. Set docker-compose as the startup project
+2. Run the project
+  - this will build a cointainer that has a seeded SQL server instance
+  - once the project stops running, the database is built, seeded, and ready to use.
+3. Run the tests in the test runner as normal and they should all pass
