@@ -1,3 +1,11 @@
+CREATE DATABASE testdb;
+
+go
+
+USE testdb;
+
+go
+
 create table make (
 id int NOT NULL PRIMARY KEY IDENTITY(1,1),
 manufacturer varchar(255)
@@ -118,10 +126,6 @@ inner join person_car on person_car.person_id = person.id
 inner join vehicle on vehicle.id = person_car.vehicle_id
 where vehicle.vin = @vin
 
-
-drop table model
-drop table make
-drop table vehicle
 go
 
 

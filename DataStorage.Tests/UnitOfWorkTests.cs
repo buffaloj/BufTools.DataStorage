@@ -18,7 +18,7 @@ namespace DataInjection.EFCore.Tests
 
         public UnitOfWorkTests()
         {
-            var connectionstring = "Data Source=SQLNCLIRDA11;Data Source=TAUCETI\\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=testdb;TrustServerCertificate=True";
+            var connectionstring = "Data Source=host.docker.internal,1433;Initial Catalog=testdb;User ID=SA;Password=change_this_password;TrustServerCertificate=True";
 
             var optionsBuilder = new DbContextOptionsBuilder<AutoRegisterDbContext<TestDataContext>>();
             optionsBuilder.UseSqlServer(connectionstring);
