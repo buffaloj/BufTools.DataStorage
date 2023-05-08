@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
@@ -12,11 +12,13 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
-    <Description>An implementation of BufTools.DataStorage that uses EntityFramework.
+    <Description>Uses reflection to add type registration layer to DBContext.   
 
-This package puts Entities, Views, SPROCs, and DB Functions "at your fingertips"; just add an Entity, Func, or Sproc and use it. No setup, registration, or other work.</Description>
+Provides a set of type reflection methods to register entities, views, and db functions. 
+
+OnModelCreating takes to entities and registers them with EnityFramework.</Description>
     <RepositoryType>entityframework;data;dataaccess;dependencyinjection;di;sql;ef</RepositoryType>
-    <Version>1.0.1</Version>
+    <Version>1.0.0</Version>
     <AssemblyVersion>1.0.1</AssemblyVersion>
     <FileVersion>1.0.1</FileVersion>
   </PropertyGroup>
@@ -52,7 +54,6 @@ This package puts Entities, Views, SPROCs, and DB Functions "at your fingertips"
 
   <ItemGroup>
     <ProjectReference Include="..\BufTools.DataAnnotations.Schema\BufTools.DataAnnotations.Schema.csproj" />
-    <ProjectReference Include="..\BufTools.DataStorage\BufTools.DataStorage.csproj" />
   </ItemGroup>
 
 </Project>

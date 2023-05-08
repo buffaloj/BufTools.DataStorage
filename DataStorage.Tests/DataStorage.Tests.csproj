@@ -17,7 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BufTools.Abstraction.UnitOfWork\BufTools.Abstraction.UnitOfWork.csproj" />
     <ProjectReference Include="..\BufTools.DataAnnotations.Schema\BufTools.DataAnnotations.Schema.csproj" />
-    <ProjectReference Include="..\BufTools.DataStorage.EntityFramework\BufTools.EntityFramework.AutoTypeRegistration.csproj" />
+    <ProjectReference Include="..\BufTools.EntityFramework.AutoTypeRegistration\BufTools.EntityFramework.AutoTypeRegistration.csproj" />
     <ProjectReference Include="..\BufTools.UnitOfWork.EntityFramework\BufTools.UnitOfWork.EntityFramework.csproj" />
   </ItemGroup>
 
