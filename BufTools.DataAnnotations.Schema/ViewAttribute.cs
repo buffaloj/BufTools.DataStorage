@@ -23,10 +23,10 @@ namespace BufTools.DataAnnotations.Schema
         /// </summary>
         /// <param name="viewName">The name of the view in the database</param>
         /// <param name="schema">Optional schema of the view in the database</param>
-        public ViewAttribute(string viewName, string schema = null)
-        {
-            ViewName = viewName;
-            Schema = schema;
-        }
+        //public ViewAttribute(string viewName, string schema = null)
+        //{
+        //    ViewName = viewName;
+        //    Schema = schema;
+        //}
     }
 }

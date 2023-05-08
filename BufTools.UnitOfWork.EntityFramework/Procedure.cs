@@ -1,10 +1,11 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using BufTools.Abstraction.UnitOfWork;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BufTools.DataStorage.EntityFramework
+namespace BufTools.UnitOfWork.EntityFramework
 {
     /// <summary>
     /// A class that runs a stored procedure in a database

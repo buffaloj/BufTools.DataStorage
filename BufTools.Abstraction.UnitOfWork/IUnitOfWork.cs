@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace BufTools.DataStorage
+namespace BufTools.Abstraction.UnitOfWork
 {
     /// <summary>
     /// Allows interacting with a single database

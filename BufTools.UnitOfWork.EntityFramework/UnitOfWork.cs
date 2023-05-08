@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BufTools.Abstraction.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace BufTools.DataStorage.EntityFramework
+namespace BufTools.UnitOfWork.EntityFramework
 {
     /// <inheritdoc/>
     public class UnitOfWork<TContext> : IUnitOfWork
-        where TContext : IDataContext
+        where TContext : DbContext
     {
         private readonly DbContext _dbContext;
 
@@ -17,7 +18,7 @@ namespace BufTools.DataStorage.EntityFramework
         /// </summary>
         /// <param name="dbContext">An EFCore dbcontext that allows access the database</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public UnitOfWork(AutoRegisterDbContext<TContext> dbContext)
+        public UnitOfWork(TContext dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException($"{nameof(dbContext)} cannot be null");
         }

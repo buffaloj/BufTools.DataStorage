@@ -12,7 +12,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
-    <Description>A set of attributes to mark your data classes for use with BufTools.DataStorage</Description>
+    <Description>A set of attributes to mark data classes so they can be found using reflection.</Description>
     <PackageTags></PackageTags>
     <PackageId>$(AssemblyName)</PackageId>
     <FileVersion>1.0.1</FileVersion>

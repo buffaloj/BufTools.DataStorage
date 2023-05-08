@@ -24,16 +24,5 @@ namespace BufTools.DataAnnotations.Schema
         public EntityAttribute()
         {
         }
-
-        /// <summary>
-        /// Constructs an instance that is associated to a specific table.
-        /// </summary>
-        /// <param name="tableName">The name of the table the entity is associated with</param>
-        /// <param name="schema">An optional param for the schema of the table</param>
-        public EntityAttribute(string tableName, string schema = null)
-        {
-            TableName = tableName;
-            Schema = schema;
-        }
     }
 }

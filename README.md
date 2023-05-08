@@ -34,9 +34,9 @@ There are two one-time setup steps to start using this package:
 1. Create your own IDataContext implementation
 
 ```cs
-public class TestDataContext : AbstractDataContext
+public class MyDataContext : AbstractDataContext
 {
-	public TestDataContext()
+	public MyDataContext()
 	{
 		IncludeWithClassAttribute<EntityAttribute>(GetType().Assembly);
 		IncludeWithClassAttribute<ViewAttribute>(GetType().Assembly);
@@ -49,8 +49,8 @@ public class TestDataContext : AbstractDataContext
 2. Register your DataContext, a UnitOfWork with an IServiceCollection, and init the database you want to use:
 
 ```cs
-services.AddSingleton<IDataContext, DataContext>();
-services.AddScopedUnitOfWork<DataContext>(options => options.UseSqlServer(connectionString));
+services.AddSingleton<MyDataContext>();
+services.AddScopedUnitOfWork<MyDataContext>(options => options.UseSqlServer(connectionString));
 ```
 
 # Usage

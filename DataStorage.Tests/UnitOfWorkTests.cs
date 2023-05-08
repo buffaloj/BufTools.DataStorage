@@ -1,4 +1,4 @@
-﻿using BufTools.DataStorage.EntityFramework;
+﻿using BufTools.UnitOfWork.EntityFramework;
 using DataInjection.EFCore.Tests.Entities;
 using DataInjection.EFCore.Tests.Functions;
 using DataInjection.EFCore.Tests.Models;
@@ -14,17 +14,17 @@ namespace DataInjection.EFCore.Tests
     [TestClass]
     public class UnitOfWorkTests
     {
-        private readonly UnitOfWork<TestDataContext> _target;
+        private readonly UnitOfWork<TestDbContext> _target;
 
         public UnitOfWorkTests()
         {
             var connectionstring = "Data Source=host.docker.internal,1433;Initial Catalog=testdb;User ID=SA;Password=change_this_password;TrustServerCertificate=True";
 
-            var optionsBuilder = new DbContextOptionsBuilder<AutoRegisterDbContext<TestDataContext>>();
+            var optionsBuilder = new DbContextOptionsBuilder<TestDbContext>();
             optionsBuilder.UseSqlServer(connectionstring);
 
-            var context = new AutoRegisterDbContext<TestDataContext>(optionsBuilder.Options, new TestDataContext());
-            _target = new UnitOfWork<TestDataContext>(context);
+            var context = new TestDbContext(optionsBuilder.Options);
+            _target = new UnitOfWork<TestDbContext>(context);
         }
 
         [TestMethod]

@@ -4,7 +4,8 @@ using System.Text.Json.Serialization;
 
 namespace DataInjection.EFCore.Tests.Entities
 {
-    [Entity("person_car")]
+    [Entity]
+    [Table("person_car")]
     public class PersonCar
     {
         [CompositeKey]
@@ -15,12 +16,12 @@ namespace DataInjection.EFCore.Tests.Entities
         [Column("vehicle_id")]
         public int VehicleId { get; set; }
 
-        [JsonIgnore]
-        [ForeignKey(nameof(PersonId))]
-        public virtual Person Person { get; set; }
+        //[JsonIgnore]
+        //[ForeignKey(nameof(PersonId))]
+        //public virtual Person Person { get; set; }
 
-        [JsonIgnore]
-        [ForeignKey(nameof(VehicleId))]
-        public virtual Vehicle Vehicle { get; set; }
+        //[JsonIgnore]
+        //[ForeignKey(nameof(VehicleId))]
+        //public virtual Vehicle Vehicle { get; set; }
     }
 }
