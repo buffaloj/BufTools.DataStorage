@@ -19,8 +19,6 @@ Provides a set of type reflection methods to register entities, views, and db fu
 OnModelCreating takes to entities and registers them with EnityFramework.</Description>
     <RepositoryType>entityframework;data;dataaccess;dependencyinjection;di;sql;ef</RepositoryType>
     <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
-    <FileVersion>1.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
