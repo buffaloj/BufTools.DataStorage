@@ -1,12 +1,21 @@
 # DataStorage
 
-This solution puts Entities, Views, SPROCs, and DB Functions "at your fingertips"; just add an Entity, Func, or Sproc and use it. No setup, registration, or other work.
+This solution provides an abstraction for a UnitOfWork, an implementation of it using EntityFramework, and a 
+DBContext that uses reflection to register data classes automatically.  The Schema package also provides 
+attributes to decorate data classes so the DBContext can find them.
+
+The purpose of this solution is to simplify accessing a database using EntityFramework. The basic approach is:
+
+1. Add initialization/class registration code once up front.
+2. Add a data class, decorate it with an [Entity], [View], or [Function] attribute and use it. That's it.
+
 
 Add an entity:
 ```cs
 [Entity]
 public class Person
 {
+    [Key]
 	public int Id { get; set; }
 	public string FirstName { get; set; }
 	public string LastName { get; set; }
@@ -22,35 +31,42 @@ var lastName = uow.Get<Person>().Where(p => p.LastName == "Doe").FirstOrDefault(
 
 This solution is made up of three packages to limit the required dependencies when using this your own solution.
 
+- BufTools.EntityFramework.AutoTypeRegistration - Adds methods to DBContext to auto register class types with EF.
+
 - BufTools.DataAnnotations.Schema - Provides Attributes to mark data classes/methods as an Entity, View, Procedure, or Function.  
 
-- BufTools.DataStorage - Provides abstractions CRUD operation, access Views, Functions, and SPROCS
+- BufTools.Abstraction.UnitOfWork - Provides a UOW abstraction for CRUD operations, and accessing Views, Functions, and SPROCS
 
-- BufTools.DataStorage.EntityFramework - An implementation of DataStorage using EntityFrameworkCore including IServiceExtensions to simplify with initial setup.
+- BufTools.UnitOfWork.EntityFramework - An implementation of UnitOfWork using EntityFrameworkCore.
+
 
 # Getting Started
 There are two one-time setup steps to start using this package:
 
-1. Create your own IDataContext implementation
-
+1. Create your own AutoRegisterDbContext to auto register class types:
+  * The UnitOfWork package requires a DBContext. Using AutoRegisterDbContext is optional.
+    
 ```cs
-public class MyDataContext : AbstractDataContext
+public class MyDbContext : AutoRegisterDbContext
 {
-	public MyDataContext()
+	public MyDbContext(DbContextOptions options) : base(options)
 	{
-		IncludeWithClassAttribute<EntityAttribute>(GetType().Assembly);
-		IncludeWithClassAttribute<ViewAttribute>(GetType().Assembly);
-		Include(typeof(Funcs));
+		RegisterEntities().WithAttribute<EntityAttribute>(GetType().Assembly);
+		RegisterViews().WithAttribute<ViewAttribute>(GetType().Assembly);
+		RegisterFunctions().WithAttribute<FunctionAttribute>(GetType().Assembly);
 	}
 }
 ```
-* derive from AbstractDataContext unless you have a special need not to. This gives you reflection support to register all data classes with a specified attribute in one call and never touch it again.
 
-2. Register your DataContext, a UnitOfWork with an IServiceCollection, and init the database you want to use:
+2. Register your DBContext and a UnitOfWork for dependency injection:
 
 ```cs
-services.AddSingleton<MyDataContext>();
-services.AddScopedUnitOfWork<MyDataContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<MyDbContext>(   
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("MySqlConnection")), 
+    ServiceLifetime.Scoped,     
+    ServiceLifetime.Scoped);
+	
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork<MyDbContext>>();
 ```
 
 # Usage
@@ -63,6 +79,7 @@ To access a DB table, add a class that represents the table, mark it with [Entit
 [Entity]
 public class Person
 {
+    [Key]
 	public int Id { get; set; }
 	public string FirstName { get; set; }
 	public string LastName { get; set; }
@@ -89,6 +106,7 @@ public class PersonView
 	public string Name { get; set; }
 }
 ```
+  * Note [Key] is not included for a View
 
 ```cs
 var name = uow.Get<PersonView>().Where(p => p.Name == "John Q Public").FirstOrDefault();
@@ -134,7 +152,7 @@ var results = _target.TableFunc(() => Funcs.OwnersOfVehicle("12345678901234567")
 ```
 
 ## Execute a SPROC
-To keep running SPROCs simple, IUnitOfWork provices a Sproc() method that returns a IProcedure instance to run a sproc.  IProcedure provides builder method to easily build up the signature of the SPROC.
+To keep running SPROCs simple, IUnitOfWork provides a Sproc() method that returns a IProcedure instance to run a sproc.  IProcedure provides builder method to easily build up the signature of the SPROC.
 * A convenient for to write the C# side of the SPROCs is to use an extension method for IProcedure.
 
 Define the SPROC:
