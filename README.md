@@ -24,14 +24,14 @@ public class Person
 
 Then use it:
 ```cs
-var lastName = uow.Get<Person>().Where(p => p.LastName == "Doe").FirstOrDefault();
+var lastName = store.Get<Person>().Where(p => p.LastName == "Doe").FirstOrDefault();
 ```
 
 # Packages
 
 This solution is made up of three packages to limit the required dependencies when using this your own solution.
 
-- BufTools.DataStore - Provides a UOW abstraction for CRUD operations, and accessing Views, Functions, and SPROCS
+- BufTools.DataStore - Provides a DataStore abstraction for CRUD operations, and accessing Views, Functions, and SPROCS
 
 - BufTools.DataStore.Schema - Provides Attributes to mark data classes/methods as StoredData, StoredView, StoredProcedure, or StoredFunction.  
 
@@ -84,7 +84,7 @@ public class Person
 ```
 
 ```cs
-var lastName = uow.Get<Person>().Where(p => p.LastName == "Doe").FirstOrDefault();
+var lastName = store.Get<Person>().Where(p => p.LastName == "Doe").FirstOrDefault();
 ```
 
 - DO use [Attribute]s from System.ComponentModel.DataAnnotations.Schema and this package as needed
@@ -106,7 +106,7 @@ public class PersonView
   * Note [Key] is not included for a View
 
 ```cs
-var name = uow.Get<PersonView>().Where(p => p.Name == "John Q Public").FirstOrDefault();
+var name = store.Get<PersonView>().Where(p => p.Name == "John Q Public").FirstOrDefault();
 ```
 
 ## Scalar Functions
@@ -124,7 +124,7 @@ public static partial class Funcs
 
 And use it:
 ```cs
-var people = uow.Get<Person>()
+var people = store.Get<Person>()
                 .Where(p => Funcs.NumberOfCarsOwned(p.Id) == 2)
                 .ToList();
 ```
@@ -167,7 +167,7 @@ public static partial class Procs
 
 And use it:
 ```cs
-var owners = uow.Sproc<Owner>()
+var owners = store.Sproc<Owner>()
                 .GetOwnersOfVehicle("12345678901234567")
                 .ToList();
 ```
