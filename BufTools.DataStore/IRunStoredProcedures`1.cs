@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 
-namespace BufTools.Abstraction.UnitOfWork
+namespace BufTools.DataStore
 {
     /// <summary>
     /// An interface to supply params to a stored procedure and then run it
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public interface IProcedure<TEntity> : IProcedure
+    public interface IProcedure<TEntity> : IRunStoredProcedures
         where TEntity : class
     {
         /// <summary>

@@ -45,7 +45,7 @@ OnModelCreating takes to entities and registers them with EnityFramework.</Descr
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BufTools.DataAnnotations.Schema\BufTools.DataAnnotations.Schema.csproj" />
+    <ProjectReference Include="..\BufTools.DataStore.Schema\BufTools.DataStore.Schema.csproj" />
   </ItemGroup>
 
 </Project>

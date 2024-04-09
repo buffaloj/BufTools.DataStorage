@@ -3,12 +3,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace BufTools.Abstraction.UnitOfWork
+namespace BufTools.DataStore
 {
     /// <summary>
     /// Allows interacting with a single database
     /// </summary>
-    public interface IUnitOfWork
+    public interface IStoreData
     {
         /// <summary>
         /// Fetches an entity or collection of entities residing in the data source
@@ -50,7 +50,7 @@ namespace BufTools.Abstraction.UnitOfWork
         /// Allows running a stored procedure that resides in the data source
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
-        /// <returns>An instance of a <see cref="IProcedure"/> used to access a sproc object</returns>
+        /// <returns>An instance of a <see cref="IRunStoredProcedures"/> used to access a sproc object</returns>
         IProcedure<TEntity> Sproc<TEntity>() where TEntity : class;
 
         /// <summary>

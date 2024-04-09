@@ -1,9 +1,9 @@
-﻿namespace BufTools.Abstraction.UnitOfWork
+﻿namespace BufTools.DataStore
 {
     /// <summary>
     /// An interface to supply params to a stored procedure and then run it
     /// </summary>
-    public interface IProcedure
+    public interface IRunStoredProcedures
     {
         
     }

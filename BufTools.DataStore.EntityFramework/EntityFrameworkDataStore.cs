@@ -1,4 +1,4 @@
-﻿using BufTools.Abstraction.UnitOfWork;
+﻿using BufTools.DataStore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BufTools.UnitOfWork.EntityFramework
 {
     /// <inheritdoc/>
-    public class UnitOfWork<TContext> : IUnitOfWork
+    public class EntityFrameworkDataStore<TContext> : IStoreData
         where TContext : DbContext
     {
         private readonly DbContext _dbContext;
@@ -18,7 +18,7 @@ namespace BufTools.UnitOfWork.EntityFramework
         /// </summary>
         /// <param name="dbContext">An EFCore dbcontext that allows access the database</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public UnitOfWork(TContext dbContext)
+        public EntityFrameworkDataStore(TContext dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException($"{nameof(dbContext)} cannot be null");
         }

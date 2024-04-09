@@ -6,7 +6,7 @@ namespace BufTools.DataAnnotations.Schema
     /// Apply this attribute to any scalar or table function
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-    sealed public class FunctionAttribute : Attribute
+    sealed public class StoredFunctionAttribute : Attribute
     {
         /// <summary>
         /// The name of the DB function a c# method si associated with
@@ -23,7 +23,7 @@ namespace BufTools.DataAnnotations.Schema
         /// </summary>
         /// <param name="functionName">The name of the function in the database</param>
         /// <param name="schema">Option schema of the function in the database</param>
-        public FunctionAttribute(string functionName, string schema = null)
+        public StoredFunctionAttribute(string functionName, string schema = null)
         {
             FunctionName = functionName;
             Schema = schema;

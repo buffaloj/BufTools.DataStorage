@@ -6,7 +6,7 @@ namespace BufTools.DataAnnotations.Schema
     /// Apply this attribute to any class that maps to a view in the database
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-    sealed public class ViewAttribute : Attribute
+    sealed public class StoredViewAttribute : Attribute
     {
         /// <summary>
         /// The name of the view the View class is associated with
