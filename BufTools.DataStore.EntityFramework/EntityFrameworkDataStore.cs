@@ -1,11 +1,10 @@
-﻿using BufTools.DataStore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace BufTools.UnitOfWork.EntityFramework
+namespace BufTools.DataStore.EntityFramework
 {
     /// <inheritdoc/>
     public class EntityFrameworkDataStore<TContext> : IStoreData
@@ -53,9 +52,9 @@ namespace BufTools.UnitOfWork.EntityFramework
         }
 
         /// <inheritdoc/>
-        public IProcedure<TEntity> Sproc<TEntity>() where TEntity : class
+        public IRunStoredProcedures<TEntity> Sproc<TEntity>() where TEntity : class
         {
-            return new Procedure<TEntity>(_dbContext.Set<TEntity>());
+            return new StoredProcRunner<TEntity>(_dbContext.Set<TEntity>());
         }
 
         /// <inheritdoc/>

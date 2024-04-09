@@ -50,8 +50,8 @@ namespace BufTools.DataStore
         /// Allows running a stored procedure that resides in the data source
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
-        /// <returns>An instance of a <see cref="IRunStoredProcedures"/> used to access a sproc object</returns>
-        IProcedure<TEntity> Sproc<TEntity>() where TEntity : class;
+        /// <returns>An instance of an <see cref="IRunStoredProcedures"/> instance used to access a sproc object</returns>
+        IRunStoredProcedures<TEntity> Sproc<TEntity>() where TEntity : class;
 
         /// <summary>
         /// Saves to current changes to the database

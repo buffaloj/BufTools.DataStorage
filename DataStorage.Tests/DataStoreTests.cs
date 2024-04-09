@@ -1,22 +1,23 @@
-﻿using BufTools.UnitOfWork.EntityFramework;
-using DataInjection.EFCore.Tests.Entities;
-using DataInjection.EFCore.Tests.Functions;
-using DataInjection.EFCore.Tests.Models;
-using DataInjection.EFCore.Tests.Procedures;
-using DataInjection.EFCore.Tests.Views;
+﻿using BufTools.DataStore;
+using BufTools.DataStore.EntityFramework;
+using DataStorage.Tests.Entities;
+using DataStorage.Tests.Functions;
+using DataStorage.Tests.Models;
+using DataStorage.Tests.Procedures;
+using DataStorage.Tests.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
 
-namespace DataInjection.EFCore.Tests
+namespace DataStorage.Tests
 {
     [TestClass]
-    public class UnitOfWorkTests
+    public class DataStoreTests
     {
-        private readonly UnitOfWork<TestDbContext> _target;
+        private readonly IStoreData _target;
 
-        public UnitOfWorkTests()
+        public DataStoreTests()
         {
             var connectionstring = "Data Source=kubernetes.docker.internal,1433;Initial Catalog=testdb;User ID=SA;Password=change_this_password;TrustServerCertificate=True";
 
@@ -24,7 +25,7 @@ namespace DataInjection.EFCore.Tests
             optionsBuilder.UseSqlServer(connectionstring);
 
             var context = new TestDbContext(optionsBuilder.Options);
-            _target = new UnitOfWork<TestDbContext>(context);
+            _target = new EntityFrameworkDataStore<TestDbContext>(context);
         }
 
         [TestMethod]

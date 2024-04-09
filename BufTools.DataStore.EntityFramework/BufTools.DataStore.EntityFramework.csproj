@@ -12,7 +12,7 @@
     <PackageTags>entityframework;data;dataaccess;dependencyinjection;di;sql;ef</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Title>Data Injection</Title>
-    <Description>This package provides an implementation of a UnitOfWork using EntityFramework.  This simple implementation provides CRUD operations of entities/views, simplifies running SPROCs and DB Functions.</Description>
+    <Description>This package provides an implementation of a DataStore using EntityFramework.  This simple implementation provides CRUD operations of entities/views, running SPROCs and DB Functions.</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile />
     <Version>1.0.0</Version>

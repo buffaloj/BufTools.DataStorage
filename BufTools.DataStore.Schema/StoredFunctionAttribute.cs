@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BufTools.DataAnnotations.Schema
+namespace BufTools.DataStore.Schema
 {
     /// <summary>
     /// Apply this attribute to any scalar or table function

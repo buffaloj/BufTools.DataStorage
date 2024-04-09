@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BufTools.DataAnnotations.Schema
+namespace BufTools.DataStore.Schema
 {
     /// <summary>
     /// Apply this attribute to any class that maps to a table or return value of a function or sproc

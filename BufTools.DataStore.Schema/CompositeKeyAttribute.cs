@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BufTools.DataAnnotations.Schema
+namespace BufTools.DataStore.Schema
 {
     /// <summary>
     /// Apply this attribute to each param that together form a composite primary key

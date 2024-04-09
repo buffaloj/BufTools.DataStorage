@@ -1,9 +1,9 @@
-﻿using BufTools.DataAnnotations.Schema;
+﻿using BufTools.DataStore.Schema;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataInjection.EFCore.Tests.Models
+namespace DataStorage.Tests.Models
 {
-    [Entity]
+    [StoredData]
     public class Owner
     {
         [Column("first_name")]

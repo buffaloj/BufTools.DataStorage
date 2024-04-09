@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BufTools.DataAnnotations.Schema
+namespace BufTools.DataStore.Schema
 {
     /// <summary>
     /// Apply this attribute to any class that maps to a view in the database

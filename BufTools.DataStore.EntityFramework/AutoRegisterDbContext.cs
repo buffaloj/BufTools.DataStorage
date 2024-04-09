@@ -1,12 +1,12 @@
-﻿using BufTools.DataAnnotations.Schema;
-using BufTools.DataStore.EntityFramework.Exceptions;
+﻿using BufTools.DataStore.EntityFramework.Exceptions;
+using BufTools.DataStore.Schema;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace BufTools.DataStore.EntityFramework.AutoTypeRegistration
+namespace BufTools.DataStore.EntityFramework
 {
     /// <summary>
     /// A datacontext for EFCore that automatically registers class types with Entity, View, and Function attributes

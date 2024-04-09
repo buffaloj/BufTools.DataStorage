@@ -1,6 +1,6 @@
 # DataStorage
 
-This solution provides an abstraction for a UnitOfWork, an implementation of it using EntityFramework, and a 
+This solution provides an abstraction for a DataStore, an implementation of it using EntityFramework, and a 
 DBContext that uses reflection to register data classes automatically.  The Schema package also provides 
 attributes to decorate data classes so the DBContext can find them.
 
@@ -31,20 +31,17 @@ var lastName = uow.Get<Person>().Where(p => p.LastName == "Doe").FirstOrDefault(
 
 This solution is made up of three packages to limit the required dependencies when using this your own solution.
 
-- BufTools.EntityFramework.AutoTypeRegistration - Adds methods to DBContext to auto register class types with EF.
+- BufTools.DataStore - Provides a UOW abstraction for CRUD operations, and accessing Views, Functions, and SPROCS
 
-- BufTools.DataAnnotations.Schema - Provides Attributes to mark data classes/methods as an Entity, View, Procedure, or Function.  
+- BufTools.DataStore.Schema - Provides Attributes to mark data classes/methods as StoredData, StoredView, StoredProcedure, or StoredFunction.  
 
-- BufTools.Abstraction.UnitOfWork - Provides a UOW abstraction for CRUD operations, and accessing Views, Functions, and SPROCS
-
-- BufTools.UnitOfWork.EntityFramework - An implementation of UnitOfWork using EntityFrameworkCore.
-
+- BufTools.DataStore.EntityFramework - An implementation of UnitOfWork using EntityFrameworkCore.
 
 # Getting Started
 There are two one-time setup steps to start using this package:
 
 1. Create your own AutoRegisterDbContext to auto register class types:
-  * The UnitOfWork package requires a DBContext. Using AutoRegisterDbContext is optional.
+  * The DataStore package requires a DBContext. Using AutoRegisterDbContext is optional.
     
 ```cs
 public class MyDbContext : AutoRegisterDbContext
@@ -58,7 +55,7 @@ public class MyDbContext : AutoRegisterDbContext
 }
 ```
 
-2. Register your DBContext and a UnitOfWork for dependency injection:
+2. Register your DBContext and a DataStore for dependency injection:
 
 ```cs
 builder.Services.AddDbContext<MyDbContext>(   
@@ -66,7 +63,7 @@ builder.Services.AddDbContext<MyDbContext>(
     ServiceLifetime.Scoped,     
     ServiceLifetime.Scoped);
 	
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork<MyDbContext>>();
+builder.Services.AddScoped<IStoreData, EntityFrameworkDataStore<MyDbContext>>();
 ```
 
 # Usage
@@ -76,7 +73,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork<MyDbContext>>();
 To access a DB table, add a class that represents the table, mark it with [Entity] and use it:
 
 ```cs
-[Entity]
+[StoredData]
 public class Person
 {
     [Key]
@@ -99,7 +96,7 @@ var lastName = uow.Get<Person>().Where(p => p.LastName == "Doe").FirstOrDefault(
 The same rules that apply to an Entity also apply to a View.  To access a View, add a class that represents the View, mark it with [View] and use it:
 
 ```cs
-[View]
+[StoredView]
 public class PersonView
 {
 	public int Id { get; set; }
@@ -133,7 +130,7 @@ var people = uow.Get<Person>()
 ```
 
 ## Table Functions
-To use a Table Function that lives in the database, you first define an empty static function in C# with the same signature as the DB function and mark it with [Function(dbFuncName)].  That function can then be called from an instance of IUnitOfWork.
+To use a Table Function that lives in the database, you first define an empty static function in C# with the same signature as the DB function and mark it with [Function(dbFuncName)].  That function can then be called from an instance of IStoreData.
 
 Define the function:
 ```cs
@@ -152,14 +149,14 @@ var results = _target.TableFunc(() => Funcs.OwnersOfVehicle("12345678901234567")
 ```
 
 ## Execute a SPROC
-To keep running SPROCs simple, IUnitOfWork provides a Sproc() method that returns a IProcedure instance to run a sproc.  IProcedure provides builder method to easily build up the signature of the SPROC.
-* A convenient for to write the C# side of the SPROCs is to use an extension method for IProcedure.
+To keep running SPROCs simple, IStoreData provides a Sproc() method that returns an IRunStoredProcedures instance to run a sproc.  IRunStoredProcedures provides builder method to easily build up the signature of the SPROC.
+* A convenient for to write the C# side of the SPROCs is to use an extension method for IRunStoredProcedures.
 
 Define the SPROC:
 ```cs
 public static partial class Procs
 {
-	public static IQueryable<Owner> GetOwnersOfVehicle(this IProcedure<Owner> proc,
+	public static IQueryable<Owner> GetOwnersOfVehicle(this IRunStoredProcedures<Owner> proc,
 															string vin)
 	{
 		return proc.WithParam("@Vin", vin)

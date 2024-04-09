@@ -1,16 +1,17 @@
-﻿using BufTools.Abstraction.UnitOfWork;
-using DataInjection.EFCore.Tests.Models;
+﻿using BufTools.DataStore;
+using DataStorage.Tests.Models;
 using System.Linq;
 
-namespace DataInjection.EFCore.Tests.Procedures
+namespace DataStorage.Tests.Procedures
 {
     public static partial class Procs
     {
-        public static IQueryable<Owner> GetOwnersOfVehicle(this IProcedure<Owner> proc,
+        public static IQueryable<Owner> GetOwnersOfVehicle(this IRunStoredProcedures<Owner> procRunner,
                                                                 string vin)
         {
-            return proc.WithParam("@Vin", vin)
-                       .Run("[dbo].[get_owners]");
+            return procRunner
+                .WithParam("@Vin", vin)
+                .Run("[dbo].[get_owners]");
         }
     }
 }

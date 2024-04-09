@@ -1,11 +1,11 @@
-﻿using BufTools.DataAnnotations.Schema;
+﻿using BufTools.DataStore.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace DataInjection.EFCore.Tests.Entities
+namespace DataStorage.Tests.Entities
 {
-    [Entity]
+    [StoredData]
     [Table("model")]
     public class Model
     {

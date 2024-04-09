@@ -1,10 +1,10 @@
-﻿using BufTools.DataAnnotations.Schema;
+﻿using BufTools.DataStore.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataInjection.EFCore.Tests.Entities
+namespace DataStorage.Tests.Entities
 {
-    [Entity]
+    [StoredData]
     [Table("make")]
     public class Make
     {

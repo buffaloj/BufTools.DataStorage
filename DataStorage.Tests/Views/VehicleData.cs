@@ -1,9 +1,9 @@
-﻿using BufTools.DataAnnotations.Schema;
+﻿using BufTools.DataStore.Schema;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataInjection.EFCore.Tests.Views
+namespace DataStorage.Tests.Views
 {
-    [View]
+    [StoredView]
     [Table("vehicledata")]
     public class VehicleData
     {
