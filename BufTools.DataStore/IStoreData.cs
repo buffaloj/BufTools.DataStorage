@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BufTools.DataStore
@@ -62,6 +63,6 @@ namespace BufTools.DataStore
         /// Saves to current changes to the database
         /// </summary>
         /// <returns>A <see cref="Task"/> to await</returns>
-        Task SaveAsync();
+        Task SaveAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

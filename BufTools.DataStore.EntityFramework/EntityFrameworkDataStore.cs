@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BufTools.DataStore.EntityFramework
@@ -70,9 +71,9 @@ namespace BufTools.DataStore.EntityFramework
         }
 
         /// <inheritdoc/>
-        public Task SaveAsync()
+        public Task SaveAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return _dbContext.SaveChangesAsync();
+            return _dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }
