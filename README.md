@@ -29,7 +29,7 @@ var lastName = store.Get<Person>().Where(p => p.LastName == "Doe").FirstOrDefaul
 
 # Packages
 
-This solution is made up of three packages to limit the required dependencies when using this your own solution.
+This solution is made up of three packages to limit the required dependencies when using this in your own solution.
 
 - BufTools.DataStore - Provides a DataStore abstraction for CRUD operations, and accessing Views, Functions, and SPROCS
 
@@ -110,7 +110,7 @@ var name = store.Get<PersonView>().Where(p => p.Name == "John Q Public").FirstOr
 ```
 
 ## Scalar Functions
-To use a Scalar Function that lives in the database, you first define an empty static function in C# with the same signature as the DB function and mark it with [Function(dbFuncName)].  That function can then be used from within a LINQ query.
+To use a Scalar Function that lives in the database, first define an empty static function in C# with the same signature as the DB function and mark it with [Function(dbFuncName)].  That function can then be used from within a LINQ query.
 
 Define the function:
 ```cs
@@ -130,7 +130,7 @@ var people = store.Get<Person>()
 ```
 
 ## Table Functions
-To use a Table Function that lives in the database, you first define an empty static function in C# with the same signature as the DB function and mark it with [Function(dbFuncName)].  That function can then be called from an instance of IStoreData.
+To use a Table Function that lives in the database, first define an empty static function in C# with the same signature as the DB function and mark it with [Function(dbFuncName)].  That function can then be called from an instance of IStoreData.
 
 Define the function:
 ```cs
@@ -149,17 +149,17 @@ var results = _target.TableFunc(() => Funcs.OwnersOfVehicle("12345678901234567")
 ```
 
 ## Execute a SPROC
-To keep running SPROCs simple, IStoreData provides a Sproc() method that returns an IRunStoredProcedures instance to run a sproc.  IRunStoredProcedures provides builder method to easily build up the signature of the SPROC.
-* A convenient for to write the C# side of the SPROCs is to use an extension method for IRunStoredProcedures.
+To keep running SPROCs simple, IStoreData provides a Sproc() method that returns an IRunStoredProcedures instance to run a sproc.  IRunStoredProcedures provides a builder method to easily build up the signature of the SPROC.
+* A convenient way to write the C# side of the SPROCs is to use an extension method for IRunStoredProcedures.
 
 Define the SPROC:
 ```cs
-public static partial class Procs
+public static partial class Sprocs
 {
-	public static IQueryable<Owner> GetOwnersOfVehicle(this IRunStoredProcedures<Owner> proc,
+	public static IQueryable<Owner> GetOwnersOfVehicle(this IRunStoredProcedures<Owner> sproc,
 															string vin)
 	{
-		return proc.WithParam("@Vin", vin)
+		return sproc.WithParam("@Vin", vin)
                    .Run("[dbo].[get_owners]");
 	}
 }
@@ -173,9 +173,9 @@ var owners = store.Sproc<Owner>()
 ```
 
 # Running the Tests
-The tests are mainly integration tests that require a SQL database to be running.  To ease setting this up and witness the tests passing, Docker files are included that will spin up a SQL Server instance and populate it with test data that the tests require.
+The tests are mainly integration tests that require a SQL database to be running. Docker files are included that will spin up a SQL Server instance and populate it with required test data.
 
-To run the tests locally:
+Run the tests locally:
 1. Set docker-compose as the startup project
 2. Run the project
   - this will build a cointainer that has a seeded SQL server instance
